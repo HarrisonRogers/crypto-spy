@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Price Tracker",
+  "version": "1.0.0",
+  "description": "A simple crypto price tracker extension",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": []
+}
