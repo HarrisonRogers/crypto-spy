@@ -19,13 +19,20 @@ type CoinsResponse = Coin[];
  * @returns Promise that resolves to an array of coin data
  */
 const fetchCoins = async (): Promise<CoinsResponse> => {
+  const apiKey = import.meta.env.VITE_COIN_GECKO_API_KEY;
+
+  // Validate that the API key exists
+  if (!apiKey) {
+    throw new Error('VITE_COIN_GECKO_API_KEY environment variable is not set');
+  }
+
   const fetchUrl =
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'x-cg-demo-api-key': process.env.VITE_COIN_GECKO_API_KEY || '',
+      'x-cg-demo-api-key': apiKey,
     },
   };
 
