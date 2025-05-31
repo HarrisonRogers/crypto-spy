@@ -6,7 +6,9 @@ import Providers from './providers/providers.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Providers>
-      <App />
+      <div className="container mx-auto my-10">
+        <App />
+      </div>
     </Providers>
   </StrictMode>
 );

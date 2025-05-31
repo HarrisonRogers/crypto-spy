@@ -1,14 +1,19 @@
-import { Button } from '@/components/ui/button';
-import useCoins from '@/data/hooks/useCoins';
+// import useCoins from '@/data/hooks/useCoins';
+import dummyCoins from '@/data/dummyCoins';
+import CoinTable from '@/components/coins/coinTable';
 
 function App() {
-  const { data } = useCoins();
+  // const { data, isLoading, error } = useCoins();
 
-  console.log(data);
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
+    <div>
+      <h1 className="text-2xl font-bold text-center">Crypto Price Tracker</h1>
+      <div className="">
+        <CoinTable coins={dummyCoins} />
+      </div>
     </div>
   );
 }
