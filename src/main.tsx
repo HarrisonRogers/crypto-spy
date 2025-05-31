@@ -1,12 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './pages/App.tsx';
-import { ThemeProvider } from './components/theme-provider.tsx';
+import Providers from './providers/providers.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <Providers>
       <App />
-    </ThemeProvider>
+    </Providers>
   </StrictMode>
 );

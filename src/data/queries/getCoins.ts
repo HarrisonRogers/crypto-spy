@@ -1,0 +1,54 @@
+// Define the structure of a single coin object from the API
+type Coin = {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  price_change_percentage_24h: number;
+  total_volume: number;
+};
+
+// Define the complete response type (array of coins)
+type CoinsResponse = Coin[];
+
+/**
+ * Fetches cryptocurrency market data from CoinGecko API
+ * @returns Promise that resolves to an array of coin data
+ */
+const fetchCoins = async (): Promise<CoinsResponse> => {
+  const fetchUrl =
+    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      'x-cg-demo-api-key': process.env.VITE_COIN_GECKO_API_KEY || '',
+    },
+  };
+
+  try {
+    // Make the API request
+    const response = await fetch(fetchUrl, options);
+
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Parse the JSON response
+    const data: CoinsResponse = await response.json();
+    return data;
+  } catch (error) {
+    // Re-throw the error so useQuery can handle it
+    throw new Error(
+      `Failed to fetch coins: ${
+        error instanceof Error ? error.message : 'Unknown error'
+      }`
+    );
+  }
+};
+
+export default fetchCoins;
