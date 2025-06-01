@@ -30,32 +30,31 @@ const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
 };
 
 function CoinTable({ coins }: { coins: CoinsResponse }) {
+  const usdTag = <small className="text-gray-400">(USD)</small>;
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>
-            Price <small className="text-gray-400">(USD)</small>
-          </TableHead>
+          <TableHead>Price {usdTag}</TableHead>
           <TableHead>1h</TableHead>
           <TableHead>24h</TableHead>
           <TableHead>7d</TableHead>
-          <TableHead>MCap</TableHead>
-          <TableHead>ATH</TableHead>
+          <TableHead>MCap {usdTag}</TableHead>
+          <TableHead>ATH {usdTag}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {coins.map((coin) => (
           <TableRow key={coin.id}>
             <TableCell>{coin.market_cap_rank}</TableCell>
-            <TableCell className="font-medium flex items-center gap-2">
+            <TableCell className="font-medium max-w-48 flex items-center gap-2">
               <Avatar className="w-7 h-7">
                 <AvatarImage src={coin.image} alt={coin.name} />
                 <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
               </Avatar>
-              {coin.name}
+              <span className="truncate">{coin.name}</span>
               <span className="text-xs text-gray-400">
                 {coin.symbol.toUpperCase()}
               </span>
