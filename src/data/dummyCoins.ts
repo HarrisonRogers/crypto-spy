@@ -5,8 +5,12 @@ const dummyCoins: Partial<Coin>[] = [
     id: 'bitcoin',
     name: 'Bitcoin',
     symbol: 'BTC',
-    current_price: 100000,
+    image:
+      'https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400',
+    current_price: 104744,
     price_change_percentage_24h: 10,
+    ath: 111814,
+    ath_change_percentage: -6.25676,
   },
   {
     id: 'ethereum',
@@ -14,6 +18,8 @@ const dummyCoins: Partial<Coin>[] = [
     symbol: 'ETH',
     current_price: 100000,
     price_change_percentage_24h: 10,
+    ath: 100000,
+    ath_change_percentage: -10.25676,
   },
   {
     id: 'solana',
