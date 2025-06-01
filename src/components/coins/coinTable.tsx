@@ -38,7 +38,9 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
         <TableRow>
           <TableHead>#</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Price</TableHead>
+          <TableHead>
+            Price <small className="text-gray-400">(USD)</small>
+          </TableHead>
           <TableHead>1h</TableHead>
           <TableHead>24h</TableHead>
           <TableHead>7d</TableHead>
