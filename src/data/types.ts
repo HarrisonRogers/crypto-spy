@@ -11,7 +11,6 @@ export type Coin = {
   price_change_percentage_7d_in_currency: number;
   total_volume: number;
   ath: number;
-  ath_change_percentage: number;
 };
 
 export type PartialCoin = Partial<Coin>;

@@ -1,18 +1,4 @@
-// Define the structure of a single coin object from the API
-type Coin = {
-  id: string;
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  price_change_percentage_24h: number;
-  total_volume: number;
-};
-
-// Define the complete response type (array of coins)
-type CoinsResponse = Coin[];
+import type { CoinsResponse } from '../types';
 
 /**
  * Fetches cryptocurrency market data from CoinGecko API

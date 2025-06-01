@@ -10,7 +10,6 @@ const dummyCoins: Partial<Coin>[] = [
     current_price: 104744,
     price_change_percentage_24h: 10,
     ath: 111814,
-    ath_change_percentage: -6.25676,
   },
   {
     id: 'ethereum',
@@ -19,7 +18,6 @@ const dummyCoins: Partial<Coin>[] = [
     current_price: 100000,
     price_change_percentage_24h: 10,
     ath: 100000,
-    ath_change_percentage: -10.25676,
   },
   {
     id: 'solana',
