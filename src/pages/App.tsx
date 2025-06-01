@@ -4,15 +4,15 @@ import CoinTable from '@/components/coins/coinTable';
 
 function App() {
   const { data, isLoading, error } = useCoins();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center">Crypto Price Tracker</h1>
-      <div className="">
-        <CoinTable coins={data || []} />
+      <div>
+        <div className="text-center mb-5 md:mb-10">
+          <h1 className="font-bold text-4xl mb-5 md:mb-10">Crypto Spy</h1>
+          {isLoading && <div>Loading...</div>}
+          {error && <div className="text-red-500">Error: {error.message}</div>}
+        </div>
+        {!isLoading && !error && <CoinTable coins={data || []} />}
       </div>
     </div>
   );

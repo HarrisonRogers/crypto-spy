@@ -11,6 +11,7 @@ import type { CoinsResponse } from '@/data/types';
 import { cn } from '@/lib/utils';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import { formatNumberWithCommas, formatPercentage } from '@/lib/formatData';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
   return (
@@ -32,7 +33,7 @@ const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
 function CoinTable({ coins }: { coins: CoinsResponse }) {
   return (
     <Table>
-      <TableCaption>List is the top 50 coins by market cap</TableCaption>
+      <TableCaption>List is the top 100 coins by market cap</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>
@@ -51,15 +52,14 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
             <TableCell>{coin.market_cap_rank}</TableCell>
             <TableCell className="font-medium">
               <div className="flex items-center gap-2">
-                {coin.image && (
-                  <img
-                    src={coin.image}
-                    alt={coin.name}
-                    className="w-6 h-6 rounded-full"
-                  />
-                )}
+                <Avatar className="w-7 h-7">
+                  <AvatarImage src={coin.image} alt={coin.name} />
+                  <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
+                </Avatar>
                 {coin.name}
-                <span className="text-xs text-gray-400">{coin.symbol}</span>
+                <span className="text-xs text-gray-400">
+                  {coin.symbol.toUpperCase()}
+                </span>
               </div>
             </TableCell>
             <TableCell>
