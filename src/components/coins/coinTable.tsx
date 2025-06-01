@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -33,7 +32,6 @@ const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
 function CoinTable({ coins }: { coins: CoinsResponse }) {
   return (
     <Table>
-      <TableCaption>List is the top 100 coins by market cap</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>
@@ -52,17 +50,15 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
         {coins.map((coin) => (
           <TableRow key={coin.id}>
             <TableCell>{coin.market_cap_rank}</TableCell>
-            <TableCell className="font-medium">
-              <div className="flex items-center gap-2">
-                <Avatar className="w-7 h-7">
-                  <AvatarImage src={coin.image} alt={coin.name} />
-                  <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
-                </Avatar>
-                {coin.name}
-                <span className="text-xs text-gray-400">
-                  {coin.symbol.toUpperCase()}
-                </span>
-              </div>
+            <TableCell className="font-medium flex items-center gap-2 max-w-80">
+              <Avatar className="w-7 h-7">
+                <AvatarImage src={coin.image} alt={coin.name} />
+                <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
+              </Avatar>
+              {coin.name}
+              <span className="text-xs text-gray-400">
+                {coin.symbol.toUpperCase()}
+              </span>
             </TableCell>
             <TableCell>
               {formatNumberWithCommas(coin.current_price || 0)}
