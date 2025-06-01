@@ -75,9 +75,9 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
             />
 
             <TableCell>
-              {formatNumberWithCommas(coin.market_cap || 0)}
+              ${formatNumberWithCommas(coin.market_cap || 0)}
             </TableCell>
-            <TableCell>{formatNumberWithCommas(coin.ath || 0)} </TableCell>
+            <TableCell>${formatNumberWithCommas(coin.ath || 0)} </TableCell>
           </TableRow>
         ))}
       </TableBody>
