@@ -50,7 +50,7 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
         {coins.map((coin) => (
           <TableRow key={coin.id}>
             <TableCell>{coin.market_cap_rank}</TableCell>
-            <TableCell className="font-medium flex items-center gap-2 max-w-80">
+            <TableCell className="font-medium flex items-center gap-2">
               <Avatar className="w-7 h-7">
                 <AvatarImage src={coin.image} alt={coin.name} />
                 <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
@@ -61,7 +61,7 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
               </span>
             </TableCell>
             <TableCell>
-              {formatNumberWithCommas(coin.current_price || 0)}
+              ${formatNumberWithCommas(coin.current_price || 0)}
             </TableCell>
 
             <PriceChangeTableCell
