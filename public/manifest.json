@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "description": "Tracks crypto prices and trends and more",
   "icons": {
-    "16": "./favicon-16x16.png",
-    "32": "./favicon-32x32.png",
-    "48": "./crypto-spy.png",
-    "128": "./crypto-spy.png"
+    "16": "favicon-16x16.png",
+    "32": "favicon-32x32.png",
+    "48": "crypto-spy.png",
+    "128": "crypto-spy.png"
   },
   "browser_action": {
-    "default_icon": "./crypto-spy.png"
+    "default_icon": "crypto-spy.png"
   },
   "action": {
     "default_popup": "index.html"
