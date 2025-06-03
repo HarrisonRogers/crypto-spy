@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <div>
-        <div className="text-center mb-5 md:mb-6">
+        <div className="text-center mb-2 md:mb-6">
           <div className="flex items-center justify-center gap-2 mb-5">
             <img
               src="/crypto-spy.png"
