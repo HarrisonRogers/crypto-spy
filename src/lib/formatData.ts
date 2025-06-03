@@ -1,5 +1,6 @@
 export function formatNumberWithCommas(num: number) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parseFloat(formatted).toFixed(num > 1 ? 2 : 3);
 }
 
 export function formatPercentage(num: number): string {
