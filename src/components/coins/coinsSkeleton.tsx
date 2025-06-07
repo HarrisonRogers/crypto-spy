@@ -4,7 +4,7 @@ import { useChromeExtension } from '@/hooks/useChromeExtension';
 
 function CoinsSkeleton() {
   const isExtension = useChromeExtension();
-  const skeletonRowNumbers = isExtension ? 6 : 30;
+  const skeletonRowNumbers = isExtension ? 15 : 30;
   const skeletonRows = Array.from({ length: skeletonRowNumbers });
 
   return (

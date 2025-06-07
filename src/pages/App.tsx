@@ -8,6 +8,7 @@ import { ArrowDownToLine } from 'lucide-react';
 function App() {
   const { data, isLoading, error } = useCoins();
   const isExtension = useChromeExtension();
+  console.log(data);
   return (
     <>
       <div className="text-center mb-2 md:mb-6">

@@ -1,5 +1,8 @@
 export function formatNumberWithCommas(num: number) {
   const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  if (num > 1) {
+    return formatted;
+  }
   return parseFloat(formatted).toFixed(num > 1 ? 2 : 3);
 }
 
