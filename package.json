@@ -6,8 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-ext": "tsc -b && vite build",
-    "build-web": "vite build --outDir dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
