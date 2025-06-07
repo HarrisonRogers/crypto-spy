@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import { formatNumberWithCommas, formatPercentage } from '@/lib/formatData';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { useChromeExtension } from '@/hooks/useChromeExtension';
 
 const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
   return (
@@ -30,6 +31,7 @@ const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
 };
 
 function CoinTable({ coins }: { coins: CoinsResponse }) {
+  const isExtension = useChromeExtension();
   const usdTag = <small className="text-gray-400">(USD)</small>;
   return (
     <Table>
@@ -49,12 +51,17 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
         {coins.map((coin) => (
           <TableRow key={coin.id}>
             <TableCell>{coin.market_cap_rank}</TableCell>
-            <TableCell className="font-medium max-w-48 flex items-center gap-2">
+            <TableCell
+              className={cn(
+                'font-medium max-w-60 flex items-center gap-2',
+                isExtension && 'max-w-48'
+              )}
+            >
               <Avatar className="w-7 h-7">
                 <AvatarImage src={coin.image} alt={coin.name} />
                 <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
               </Avatar>
-              <span className="truncate">{coin.name}</span>
+              <span className={cn(isExtension && 'truncate')}>{coin.name}</span>
               <span className="text-xs text-gray-400">
                 {coin.symbol.toUpperCase()}
               </span>
