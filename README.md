@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# 🕵️‍♂️ Crypto Spy - Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Crypto Spy** is a Chrome extension built with Vite that allows users to track cryptocurrency prices using the CoinGecko API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the Repository
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/your-username/crypto-spy.git
+cd crypto-spy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Set Up Environment Variables
+
+Create a `.env.local` file in the root directory and add your [CoinGecko API Key](https://www.coingecko.com/en/api):
+
+```env
+VITE_COIN_GECKO_API_KEY=[YOUR_API_KEY]
+```
+
+---
+
+## 🛠 Building the Extension
+
+To build the project and update the `build/` folder:
+
+```bash
+npm run build
+```
+
+This will generate the production-ready files in the `build/` directory.
+
+---
+
+## 🧪 Testing the Extension Locally
+
+1. Open **Chrome** and navigate to:  
+   `chrome://extensions/`
+
+2. Enable **Developer mode** (top right corner).
+
+3. Click **Load unpacked** (top left corner).
+
+4. Select your **zipped `build/` folder**.  
+   _Note: You must compress the `build/` folder into a `.zip` before selecting it._
+
+5. The extension should now appear and be ready to use.
+
+---
+
+## 🧹 Git Commit Linting
+
+This project uses [Git Commit Msg Linter](https://github.com/legend80s/git-commit-msg-linter#readme) for commit message formatting.
+
+Please follow commit guidelines when contributing.
+
+---
+
+## 🔒 Contribution Rules
+
+- **Do not push directly to `main`.**
+- Always create a **Pull Request (PR)** unless you have explicit permission to push.
+- Follow coding and commit standards for all contributions.
+
+---
+
+## 📄 License
+
+MIT © [Your Name]
+
+---
+
+## 🙏 Acknowledgements
+
+- [CoinGecko API](https://www.coingecko.com/en/api)
+- [Vite](https://vitejs.dev/)
