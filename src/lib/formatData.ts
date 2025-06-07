@@ -19,3 +19,12 @@ export function formatPercentage(num: number): string {
   // Otherwise, return the number as a string without unnecessary formatting
   return num.toString();
 }
+
+// Turn date into DD/MM/YY
+export const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: '2-digit',
+    month: 'numeric',
+    day: 'numeric',
+  });
+};

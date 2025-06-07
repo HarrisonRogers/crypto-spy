@@ -9,7 +9,11 @@ import {
 import type { CoinsResponse } from '@/data/types';
 import { cn } from '@/lib/utils';
 import { ChevronUp, ChevronDown } from 'lucide-react';
-import { formatNumberWithCommas, formatPercentage } from '@/lib/formatData';
+import {
+  formatNumberWithCommas,
+  formatPercentage,
+  formatDate,
+} from '@/lib/formatData';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 
@@ -83,7 +87,12 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
             <TableCell>
               ${formatNumberWithCommas(coin.market_cap || 0)}
             </TableCell>
-            <TableCell>${formatNumberWithCommas(coin.ath || 0)} </TableCell>
+            <TableCell>
+              ${formatNumberWithCommas(coin.ath || 0)}{' '}
+              <small className="text-gray-400">
+                ({formatDate(coin.ath_date)})
+              </small>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
