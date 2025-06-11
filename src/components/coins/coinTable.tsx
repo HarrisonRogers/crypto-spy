@@ -57,18 +57,27 @@ function CoinTable({ coins }: { coins: CoinsResponse }) {
             <TableCell>{coin.market_cap_rank}</TableCell>
             <TableCell
               className={cn(
-                'font-medium max-w-60 flex items-center gap-2',
+                'font-medium max-w-48 md:max-w-60 group',
                 isExtension && 'max-w-48'
               )}
             >
-              <Avatar className="w-7 h-7">
-                <AvatarImage src={coin.image} alt={coin.name} />
-                <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
-              </Avatar>
-              <span className={cn(isExtension && 'truncate')}>{coin.name}</span>
-              <span className="text-xs text-gray-400">
-                {coin.symbol.toUpperCase()}
-              </span>
+              <a
+                href={`https://www.coingecko.com/en/coins/${coin.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Avatar className="w-7 h-7">
+                  <AvatarImage src={coin.image} alt={coin.name} />
+                  <AvatarFallback>{coin.symbol.slice(0, 2)}</AvatarFallback>
+                </Avatar>
+                <span className="truncate group-hover:underline underline-offset-2">
+                  {coin.name}
+                </span>
+                <span className="text-xs text-gray-400">
+                  {coin.symbol.toUpperCase()}
+                </span>
+              </a>
             </TableCell>
             <TableCell>
               ${formatNumberWithCommas(coin.current_price || 0)}
