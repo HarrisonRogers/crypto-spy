@@ -17,3 +17,12 @@ export type Coin = {
 export type PartialCoin = Partial<Coin>;
 
 export type CoinsResponse = Coin[];
+
+export type MostActiveStocksResponse = {
+  symbol: string;
+  price: number;
+  name: string;
+  change: number;
+  changesPercentage: number;
+  exchange: string;
+};
