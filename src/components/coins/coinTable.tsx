@@ -6,7 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import type { CoinsResponse } from '@/data/types';
 import { cn } from '@/lib/utils';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import {
@@ -16,6 +15,8 @@ import {
 } from '@/lib/formatData';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
+import useCoins from '@/data/hooks/useCoins';
+import TableSkeleton from '../tableSkeleton';
 
 const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
   return (
@@ -34,8 +35,18 @@ const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
   );
 };
 
-function CoinTable({ coins }: { coins: CoinsResponse }) {
+function CoinTable() {
+  const { data: coins, isLoading, error } = useCoins();
   const isExtension = useChromeExtension();
+
+  if (isLoading) return <TableSkeleton />;
+  if (error || !coins)
+    return (
+      <div className="text-red-500">
+        Error: {error?.message || 'Unknown error'}
+      </div>
+    );
+
   const usdTag = <small className="text-gray-400">(USD)</small>;
   return (
     <Table>

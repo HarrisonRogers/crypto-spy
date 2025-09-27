@@ -1,13 +1,11 @@
-import useCoins from '@/data/hooks/useCoins';
 import CoinTable from '@/components/coins/coinTable';
-import CoinsSkeleton from '@/components/coins/coinsSkeleton';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 import { Button } from '@/components/ui/button';
 import { ArrowDownToLine } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import StocksTable from '@/components/stocks/stocksTable';
 
 function App() {
-  const { data, isLoading, error } = useCoins();
   const isExtension = useChromeExtension();
   return (
     <>
@@ -34,18 +32,10 @@ function App() {
             <TabsTrigger value="stocks">Stocks</TabsTrigger>
           </TabsList>
           <TabsContent value="coins">
-            {isLoading && <CoinsSkeleton />}
-            {error && (
-              <div className="text-red-500">Error: {error.message}</div>
-            )}
-            {!isLoading && !error && <CoinTable coins={data || []} />}
+            <CoinTable />
           </TabsContent>
           <TabsContent value="stocks">
-            {isLoading && <CoinsSkeleton />}
-            {error && (
-              <div className="text-red-500">Error: {error.message}</div>
-            )}
-            {!isLoading && !error && <CoinTable coins={data || []} />}
+            <StocksTable />
           </TabsContent>
         </Tabs>
       </div>

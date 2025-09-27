@@ -1,24 +1,22 @@
-import type { MostActiveStocksResponse } from '../types';
+import type { Stock } from '../types';
 
 /**
  * Fetches cryptocurrency market data from CoinGecko API
  * @returns Promise that resolves to an array of coin data
  */
-const fetchMostActiveStocks = async (): Promise<MostActiveStocksResponse[]> => {
-  const apiKey = import.meta.env.STOCK_API_KEY;
+const fetchMostActiveStocks = async (): Promise<Stock[]> => {
+  const apiKey = import.meta.env.VITE_STOCK_API_KEY;
 
   // Validate that the API key exists
   if (!apiKey) {
-    throw new Error('STOCK_API_KEY environment variable is not set');
+    throw new Error('Environment variable is not set');
   }
 
-  const fetchUrl =
-    'https://financialmodelingprep.com/stable/most-actives?apikey=FBnmSjcY6Ilqd2oBLU6blyj8pHDYC3tM';
+  const fetchUrl = `https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&sort=market_cap&order=desc&limit=100&apiKey=${apiKey}`;
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'x-cg-demo-api-key': apiKey,
     },
   };
 
@@ -32,7 +30,7 @@ const fetchMostActiveStocks = async (): Promise<MostActiveStocksResponse[]> => {
     }
 
     // Parse the JSON response
-    const data: MostActiveStocksResponse[] = await response.json();
+    const data: Stock[] = await response.json();
     return data;
   } catch (error) {
     // Re-throw the error so useQuery can handle it

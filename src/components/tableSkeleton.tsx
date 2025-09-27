@@ -1,8 +1,8 @@
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from './ui/skeleton';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 
-function CoinsSkeleton() {
+function TableSkeleton() {
   const isExtension = useChromeExtension();
   const skeletonRowNumbers = isExtension ? 15 : 30;
   const skeletonRows = Array.from({ length: skeletonRowNumbers });
@@ -77,4 +77,4 @@ function CoinsSkeleton() {
   );
 }
 
-export default CoinsSkeleton;
+export default TableSkeleton;

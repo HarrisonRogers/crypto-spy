@@ -37,9 +37,7 @@ const fetchCoins = async (): Promise<CoinsResponse> => {
   } catch (error) {
     // Re-throw the error so useQuery can handle it
     throw new Error(
-      `Failed to fetch coins: ${
-        error instanceof Error ? error.message : 'Unknown error'
-      }`
+      `${error instanceof Error ? error.message : 'Unknown error'}`
     );
   }
 };

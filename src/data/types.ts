@@ -1,3 +1,4 @@
+// Crypto types
 export type Coin = {
   id: string;
   symbol: string;
@@ -18,11 +19,18 @@ export type PartialCoin = Partial<Coin>;
 
 export type CoinsResponse = Coin[];
 
-export type MostActiveStocksResponse = {
-  symbol: string;
-  price: number;
+// Stock types
+export type Stock = {
+  ticker: string;
   name: string;
-  change: number;
-  changesPercentage: number;
-  exchange: string;
+  market: string;
+  locale: string;
+  primary_exchange: string;
+  type: string;
+  active: boolean;
+  currency_name: string;
+  cik: string;
+  composite_figi: string;
+  share_class_figi: string;
+  last_updated_utc: Date;
 };
