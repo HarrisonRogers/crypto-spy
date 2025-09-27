@@ -5,11 +5,11 @@ import type { MostActiveStocksResponse } from '../types';
  * @returns Promise that resolves to an array of coin data
  */
 const fetchMostActiveStocks = async (): Promise<MostActiveStocksResponse[]> => {
-  const apiKey = import.meta.env.VITE_COIN_GECKO_API_KEY;
+  const apiKey = import.meta.env.STOCK_API_KEY;
 
   // Validate that the API key exists
   if (!apiKey) {
-    throw new Error('VITE_COIN_GECKO_API_KEY environment variable is not set');
+    throw new Error('STOCK_API_KEY environment variable is not set');
   }
 
   const fetchUrl =
@@ -37,7 +37,7 @@ const fetchMostActiveStocks = async (): Promise<MostActiveStocksResponse[]> => {
   } catch (error) {
     // Re-throw the error so useQuery can handle it
     throw new Error(
-      `Failed to fetch coins: ${
+      `Failed to fetch stocks: ${
         error instanceof Error ? error.message : 'Unknown error'
       }`
     );
