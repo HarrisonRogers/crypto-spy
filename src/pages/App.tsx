@@ -4,12 +4,18 @@ import { Button } from '@/components/ui/button';
 import { ArrowDownToLine } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import StocksTable from '@/components/stocks/stocksTable';
+import { cn } from '@/lib/utils';
 
 function App() {
   const isExtension = useChromeExtension();
   return (
     <>
-      <div className="text-center mb-2 md:mb-6">
+      <div
+        className={cn(
+          'text-center mb-2 md:mb-6',
+          isExtension && 'min-w-[650px]'
+        )}
+      >
         <div className="relative flex items-center justify-center gap-2 mb-5">
           <img
             src="/crypto-spy.png"
@@ -18,7 +24,11 @@ function App() {
           />
           <h1 className="font-bold text-4xl">Crypto Spy</h1>
           {!isExtension && (
-            <Button asChild variant="link" className="absolute right-0 top-5">
+            <Button
+              asChild
+              variant="link"
+              className="right-0 top-5 absolute hidden md:flex"
+            >
               <a href="https://chromewebstore.google.com/detail/crypto-spy/coimplobgcaanmehcjcholcjclgacnhm">
                 <ArrowDownToLine />
                 chrome extension
@@ -27,7 +37,7 @@ function App() {
           )}
         </div>
         <Tabs defaultValue="coins" className="text-start">
-          <TabsList className="self-center w-[50%] mb-6">
+          <TabsList className="self-center md:w-[50%] w-[90%] mb-6">
             <TabsTrigger value="coins">Crypto</TabsTrigger>
             <TabsTrigger value="stocks">Stocks</TabsTrigger>
           </TabsList>

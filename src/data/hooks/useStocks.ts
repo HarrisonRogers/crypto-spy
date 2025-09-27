@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import fetchMostActiveStocks from '../queries/getMostActiveStocks';
+import fetchMostActiveStocks from '../queries/getStocks';
 
 /**
  * Custom hook that provides stock data using React Query
