@@ -1,9 +1,20 @@
-export function formatNumberWithCommas(num: number) {
+export function formatNumberWithCommas(num: number, isExtension?: boolean) {
   const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  if (isExtension) {
+    if (num >= 1000000000000) {
+      return (num / 1000000000000).toFixed(2) + 'tril';
+    }
+    if (num >= 1000000000) {
+      return (num / 1000000000).toFixed(2) + 'bil';
+    }
+  }
+
   if (num > 1) {
     return formatted;
   }
-  return parseFloat(formatted).toFixed(num > 1 ? 2 : 3);
+
+  return parseFloat(formatted).toFixed(num < 1 ? 3 : 2);
 }
 
 export function formatPercentage(num: number): string {
