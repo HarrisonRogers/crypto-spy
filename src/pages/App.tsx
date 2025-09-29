@@ -37,7 +37,12 @@ function App() {
           )}
         </div>
         <Tabs defaultValue="coins" className="text-start">
-          <TabsList className="self-center md:w-[50%] w-[90%] mb-6">
+          <TabsList
+            className={cn(
+              'self-center md:w-[50%] w-[90%] mb-6',
+              isExtension && 'mb-2'
+            )}
+          >
             <TabsTrigger value="coins">Crypto</TabsTrigger>
             <TabsTrigger value="stocks">Stocks</TabsTrigger>
           </TabsList>
