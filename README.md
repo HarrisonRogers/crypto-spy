@@ -69,17 +69,4 @@ Please follow commit guidelines when contributing.
 
 - **Do not push directly to `main`.**
 - Always create a **Pull Request (PR)** unless you have explicit permission to push.
-- Follow coding and commit standards for all contributions.
-
----
-
-## 📄 License
-
-MIT © [Your Name]
-
----
-
-## 🙏 Acknowledgements
-
-- [CoinGecko API](https://www.coingecko.com/en/api)
-- [Vite](https://vitejs.dev/)
+- Follow coding and commit standards for all 
