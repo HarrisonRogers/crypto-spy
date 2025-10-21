@@ -7,7 +7,7 @@ import Footer from './components/footer.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Providers>
-      <div className="container mx-auto mt-5 mb-6 md:mt-10">
+      <div className="container mx-auto mt-5 mb-6 md:mt-10 px-3">
         <App />
         <Footer />
       </div>
