@@ -21,11 +21,7 @@ npm install
 
 ### 3. Set Up Environment Variables
 
-Create a `.env.local` file in the root directory and add your [CoinGecko API Key](https://www.coingecko.com/en/api):
-
-```env
-VITE_COIN_GECKO_API_KEY=[YOUR_API_KEY]
-```
+Create a `.env` file in the root directory and message myself for the API key.
 
 ---
 
@@ -43,14 +39,14 @@ This will generate the production-ready files in the `build/` directory.
 
 ## 🧪 Testing the Extension Locally
 
-1. Open **Chrome** and navigate to:  
+1. Open **Chrome** and navigate to:
    `chrome://extensions/`
 
 2. Enable **Developer mode** (top right corner).
 
 3. Click **Load unpacked** (top left corner).
 
-4. Select your **zipped `build/` folder**.  
+4. Select your **zipped `build/` folder**.
    _Note: You must compress the `build/` folder into a `.zip` before selecting it._
 
 5. The extension should now appear and be ready to use.
@@ -69,4 +65,4 @@ Please follow commit guidelines when contributing.
 
 - **Do not push directly to `main`.**
 - Always create a **Pull Request (PR)** unless you have explicit permission to push.
-- Follow coding and commit standards for all 
+- Follow coding and commit standards for all
