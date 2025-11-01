@@ -6,8 +6,10 @@ import SearchPairs from '../dex/searchPairs';
 function TabComponent() {
   const [activeTab, setActiveTab] = useState('coins');
 
+  const isDexTab = activeTab === 'dex';
+
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-5">
       <div className="flex items-center justify-center">
         <div className="border rounded-lg p-1 max-w-[600px] w-full flex items-center justify-center gap-2">
           <Button
@@ -15,6 +17,7 @@ function TabComponent() {
             variant="tab"
             onClick={() => setActiveTab('coins')}
             data-state={activeTab === 'coins' ? 'active' : 'inactive'}
+            className="cursor-pointer"
           >
             Coins
           </Button>
@@ -23,17 +26,16 @@ function TabComponent() {
             variant="tab"
             onClick={() => setActiveTab('dex')}
             data-state={activeTab === 'dex' ? 'active' : 'inactive'}
+            className="cursor-pointer"
           >
             Pairs
           </Button>
         </div>
       </div>
-      <Activity mode={activeTab === 'dex' ? 'visible' : 'hidden'}>
+      <Activity mode={isDexTab ? 'visible' : 'hidden'}>
         <SearchPairs />
       </Activity>
-      <Activity mode={activeTab === 'coins' ? 'visible' : 'hidden'}>
-        <CoinTable />
-      </Activity>
+      {!isDexTab && <CoinTable />}
     </div>
   );
 }
