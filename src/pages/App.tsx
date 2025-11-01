@@ -36,14 +36,14 @@ function App() {
               Coins
             </TabsTrigger>
             <TabsTrigger value="dex" className="cursor-pointer">
-              Dex
+              Pairs
             </TabsTrigger>
           </TabsList>
           <TabsContent value="coins">
             <CoinTable />
           </TabsContent>
           <TabsContent value="dex">
-            <h1>Dex</h1>
+            <h1>Search Pairs</h1>
           </TabsContent>
         </Tabs>
       </div>

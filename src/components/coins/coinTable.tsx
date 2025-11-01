@@ -7,45 +7,22 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-import {
-  formatNumberWithCommas,
-  formatPercentage,
-  formatDate,
-} from '@/lib/formatData';
+import { formatNumberWithCommas, formatDate } from '@/lib/formatData';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 import useCoins from '@/data/hooks/useCoins';
 import TableSkeleton from '../tableSkeleton';
-
-const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
-  return (
-    <TableCell
-      className={cn(priceChange > 0 ? 'text-green-500' : 'text-red-500')}
-    >
-      <div className="flex items-center">
-        {priceChange > 0 ? (
-          <ChevronUp className="w-4 h-4" />
-        ) : (
-          <ChevronDown className="w-4 h-4" />
-        )}
-        {formatPercentage(priceChange || 0)}%
-      </div>
-    </TableCell>
-  );
-};
+import PriceChangeTableCell from './priceChangeTableCell';
+import ErrorMessage from '../ui/errorMessage';
 
 function CoinTable() {
   const { data: coins, isLoading, error } = useCoins();
   const isExtension = useChromeExtension();
 
   if (isLoading) return <TableSkeleton />;
+
   if (error || !coins)
-    return (
-      <div className="text-red-500">
-        Error: {error?.message || 'Unknown error'}
-      </div>
-    );
+    return <ErrorMessage message={error?.message || 'Unknown error'} />;
 
   const usdTag = <small className="text-gray-400">(USD)</small>;
   return (
