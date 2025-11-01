@@ -50,7 +50,7 @@ function SearchPairs() {
   return (
     <div className="space-y-4">
       {/* Search Input Section */}
-      <div className="flex relative gap-2 mx-6">
+      <div className="flex relative gap-2 mx-3">
         <Search
           className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
           onClick={() => searchInputRef.current?.focus()}
@@ -62,7 +62,7 @@ function SearchPairs() {
           placeholder="Search pairs by token name, symbol, or address"
           value={inputValue}
           onChange={handleInputChange}
-          className="pl-8"
+          className="pl-8 h-10"
         />
       </div>
 
