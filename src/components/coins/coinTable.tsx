@@ -14,6 +14,7 @@ import useCoins from '@/data/hooks/useCoins';
 import TableSkeleton from '../tableSkeleton';
 import PriceChangeTableCell from './priceChangeTableCell';
 import ErrorMessage from '../ui/errorMessage';
+import UsdTag from '../ui/usdTag';
 
 function CoinTable() {
   const { data: coins, isLoading, error } = useCoins();
@@ -24,19 +25,24 @@ function CoinTable() {
   if (error || !coins)
     return <ErrorMessage message={error?.message || 'Unknown error'} />;
 
-  const usdTag = <small className="text-gray-400">(USD)</small>;
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Price {usdTag}</TableHead>
+          <TableHead>
+            Price <UsdTag />
+          </TableHead>
           <TableHead>1h</TableHead>
           <TableHead>24h</TableHead>
           <TableHead>7d</TableHead>
-          <TableHead>MCap {usdTag}</TableHead>
-          <TableHead>ATH {usdTag}</TableHead>
+          <TableHead>
+            MCap <UsdTag />
+          </TableHead>
+          <TableHead>
+            ATH <UsdTag />
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
