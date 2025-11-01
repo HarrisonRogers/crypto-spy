@@ -1,4 +1,4 @@
-// Crypto types
+// Coin Gecko Crypto types
 export type Coin = {
   id: string;
   symbol: string;
@@ -19,18 +19,76 @@ export type PartialCoin = Partial<Coin>;
 
 export type CoinsResponse = Coin[];
 
-// Stock types
-export type Stock = {
-  ticker: string;
-  name: string;
-  market: string;
-  locale: string;
-  primary_exchange: string;
-  type: string;
-  active: boolean;
-  currency_name: string;
-  cik: string;
-  composite_figi: string;
-  share_class_figi: string;
-  last_updated_utc: Date;
+// Dex screener search results
+export type DexResults = {
+  schemaVersion: string;
+  pairs: Pair[];
 };
+
+export interface Pair {
+  chainId: string;
+  dexId: string;
+  url: string;
+  pairAddress: string;
+  labels: string[];
+  baseToken: EToken;
+  quoteToken: EToken;
+  priceNative: string;
+  priceUsd: string;
+  txns: Txns;
+  volume: PriceChange;
+  priceChange: PriceChange;
+  liquidity: Liquidity;
+  fdv: number;
+  marketCap: number;
+  pairCreatedAt: number;
+  info: Info;
+  boosts: Boosts;
+}
+
+export interface EToken {
+  address: string;
+  name: string;
+  symbol: string;
+}
+
+export interface Boosts {
+  active: number;
+}
+
+export interface Info {
+  imageUrl: string;
+  websites: Website[];
+  socials: Social[];
+}
+
+export interface Social {
+  platform: string;
+  handle: string;
+}
+
+export interface Website {
+  url: string;
+}
+
+export interface Liquidity {
+  usd: number;
+  base: number;
+  quote: number;
+}
+
+export interface PriceChange {
+  h1: number;
+  h6: number;
+  h24: number;
+  m5: number;
+}
+
+export interface Txns {
+  ANY_ADDITIONAL_PROPERTY: AnyAdditionalProperty;
+}
+
+export interface AnyAdditionalProperty {
+  buys: number;
+  sells: number;
+}

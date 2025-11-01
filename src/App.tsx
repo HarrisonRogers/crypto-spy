@@ -1,14 +1,15 @@
-import CoinTable from "@/components/coins/coinTable";
-import { useChromeExtension } from "@/hooks/useChromeExtension";
-import { Button } from "@/components/ui/button";
-import { ArrowDownToLine } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useChromeExtension } from '@/hooks/useChromeExtension';
+import { Button } from '@/components/ui/button';
+import { ArrowDownToLine } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+import TabComponent from './components/ui/tabComponent';
 
 function App() {
   const isExtension = useChromeExtension();
   return (
     <>
-      <div className={cn("mb-2 md:mb-6", isExtension && "w-full")}>
+      <div className={cn('mb-2 md:mb-6', isExtension && 'min-w-[600px]')}>
         <div className="relative flex items-center justify-center gap-2 mb-5">
           <img
             src="/crypto-spy.png"
@@ -29,7 +30,7 @@ function App() {
             </Button>
           )}
         </div>
-        <CoinTable />
+        <TabComponent />
       </div>
     </>
   );

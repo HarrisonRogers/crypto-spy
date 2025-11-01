@@ -7,59 +7,42 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-import {
-  formatNumberWithCommas,
-  formatPercentage,
-  formatDate,
-} from '@/lib/formatData';
+import { formatNumberWithCommas, formatDate } from '@/lib/formatData';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 import useCoins from '@/data/hooks/useCoins';
 import TableSkeleton from '../tableSkeleton';
-
-const PriceChangeTableCell = ({ priceChange }: { priceChange: number }) => {
-  return (
-    <TableCell
-      className={cn(priceChange > 0 ? 'text-green-500' : 'text-red-500')}
-    >
-      <div className="flex items-center">
-        {priceChange > 0 ? (
-          <ChevronUp className="w-4 h-4" />
-        ) : (
-          <ChevronDown className="w-4 h-4" />
-        )}
-        {formatPercentage(priceChange || 0)}%
-      </div>
-    </TableCell>
-  );
-};
+import PriceChangeTableCell from './priceChangeTableCell';
+import ErrorMessage from '../ui/errorMessage';
+import UsdTag from '../ui/usdTag';
 
 function CoinTable() {
   const { data: coins, isLoading, error } = useCoins();
   const isExtension = useChromeExtension();
 
   if (isLoading) return <TableSkeleton />;
-  if (error || !coins)
-    return (
-      <div className="text-red-500">
-        Error: {error?.message || 'Unknown error'}
-      </div>
-    );
 
-  const usdTag = <small className="text-gray-400">(USD)</small>;
+  if (error || !coins)
+    return <ErrorMessage message={error?.message || 'Unknown error'} />;
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Price {usdTag}</TableHead>
+          <TableHead>
+            Price <UsdTag />
+          </TableHead>
           <TableHead>1h</TableHead>
           <TableHead>24h</TableHead>
           <TableHead>7d</TableHead>
-          <TableHead>MCap {usdTag}</TableHead>
-          <TableHead>ATH {usdTag}</TableHead>
+          <TableHead>
+            MCap <UsdTag />
+          </TableHead>
+          <TableHead>
+            ATH <UsdTag />
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
