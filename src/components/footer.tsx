@@ -13,7 +13,7 @@ function Footer() {
     }, 5000);
   };
   return (
-    <div className="text-center text-gray-400 text-sm mt-6 md:mt-0">
+    <div className="bottom-10 left-0 right-0 text-center text-gray-400 text-sm mt-6 pb-4 md:mt-0 px-6">
       Made by{' '}
       <a
         href="https://github.com/HarrisonRogers"
@@ -23,10 +23,13 @@ function Footer() {
         @HarrisonRogers
       </a>
       <div
-        className="flex gap-2 items-center justify-center cursor-pointer outline py-2 px-3 rounded-md w-fit mx-auto mt-1"
+        className="flex gap-2 items-center justify-center cursor-pointer outline md:w-fit py-2 px-3 rounded-md mx-auto mt-1"
         onClick={handleClick}
       >
-        ETH: 0x574707E7004659b009BEC9b40f116b7403a92eb9
+        ETH:{' '}
+        <span className="truncate max-w-[400px]">
+          0x574707E7004659b009BEC9b40f116b7403a92eb9
+        </span>
         {isCopied ? (
           <Check className="w-4 h-4 inline-block text-green-500" />
         ) : (

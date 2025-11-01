@@ -26,7 +26,7 @@ function CoinTable() {
     return <ErrorMessage message={error?.message || 'Unknown error'} />;
 
   return (
-    <Table>
+    <Table className="mx-3">
       <TableHeader>
         <TableRow>
           <TableHead>#</TableHead>

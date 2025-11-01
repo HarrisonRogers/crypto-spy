@@ -8,7 +8,7 @@ function TableSkeleton() {
   const skeletonRows = Array.from({ length: skeletonRowNumbers });
 
   return (
-    <Table>
+    <Table className="mx-3">
       <TableBody>
         {skeletonRows.map((_, index) => (
           <TableRow key={index}>

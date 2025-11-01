@@ -50,7 +50,7 @@ function SearchPairs() {
   return (
     <div className="space-y-4">
       {/* Search Input Section */}
-      <div className="flex relative gap-2">
+      <div className="flex relative gap-2 mx-6">
         <Search
           className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
           onClick={() => searchInputRef.current?.focus()}
@@ -73,7 +73,7 @@ function SearchPairs() {
 
       {/* Show results when we have data */}
       {data && data.pairs && data.pairs.length > 0 && (
-        <Table>
+        <Table className="mx-3">
           <TableHeader>
             <TableRow>
               <TableHead>Pair</TableHead>

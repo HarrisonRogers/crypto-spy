@@ -10,7 +10,7 @@ function TabComponent() {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center px-6">
         <div className="border rounded-lg p-1 max-w-[600px] w-full flex items-center justify-center gap-2">
           <Button
             id="coins"
