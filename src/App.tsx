@@ -1,10 +1,9 @@
-import CoinTable from '@/components/coins/coinTable';
 import { useChromeExtension } from '@/hooks/useChromeExtension';
 import { Button } from '@/components/ui/button';
 import { ArrowDownToLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import SearchPairs from './components/dex/searchPairs';
+
+import TabComponent from './components/ui/tabComponent';
 
 function App() {
   const isExtension = useChromeExtension();
@@ -31,22 +30,7 @@ function App() {
             </Button>
           )}
         </div>
-        <Tabs defaultValue="coins">
-          <TabsList className="self-center max-w-[600px] w-full mb-4">
-            <TabsTrigger value="coins" className="cursor-pointer">
-              Coins
-            </TabsTrigger>
-            <TabsTrigger value="dex" className="cursor-pointer">
-              Pairs
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="coins">
-            <CoinTable />
-          </TabsContent>
-          <TabsContent value="dex">
-            <SearchPairs />
-          </TabsContent>
-        </Tabs>
+        <TabComponent />
       </div>
     </>
   );
