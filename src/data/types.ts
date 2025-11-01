@@ -78,7 +78,10 @@ export interface Liquidity {
 }
 
 export interface PriceChange {
-  ANY_ADDITIONAL_PROPERTY: number;
+  h1: number;
+  h6: number;
+  h24: number;
+  m5: number;
 }
 
 export interface Txns {

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowDownToLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import SearchPairs from './components/dex/searchPairs';
 
 function App() {
   const isExtension = useChromeExtension();
@@ -43,7 +44,7 @@ function App() {
             <CoinTable />
           </TabsContent>
           <TabsContent value="dex">
-            <h1>Search Pairs</h1>
+            <SearchPairs />
           </TabsContent>
         </Tabs>
       </div>
