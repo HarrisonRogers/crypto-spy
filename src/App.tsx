@@ -4,12 +4,18 @@ import { ArrowDownToLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 import TabComponent from './components/ui/tabComponent';
+import Footer from './components/footer';
 
 function App() {
   const isExtension = useChromeExtension();
   return (
-    <>
-      <div className={cn('mb-2 md:mb-6', isExtension && 'min-w-[600px]')}>
+    <div
+      className={cn(
+        'max-w-[1400px] mx-auto mt-5 md:mt-10 h-[calc(100vh-40px)] flex flex-col justify-between',
+        isExtension && 'w-[600px]'
+      )}
+    >
+      <div className="mb-2 md:mb-6">
         <div className="relative flex items-center justify-center gap-2 mb-5">
           <img
             src="/crypto-spy.png"
@@ -32,7 +38,8 @@ function App() {
         </div>
         <TabComponent />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
