@@ -1,17 +1,22 @@
-export function formatNumberWithCommas(num: number, isExtension?: boolean) {
+export function formatNumberWithCommas(num: number) {
   const formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  if (isExtension) {
-    if (num >= 1000000000000) {
-      return (num / 1000000000000).toFixed(2) + 'tril';
-    }
-    if (num >= 1000000000) {
-      return (num / 1000000000).toFixed(2) + 'bil';
-    }
+  if (num >= 1000000000000) {
+    return (num / 1000000000000).toFixed(2) + 'T';
+  }
+  if (num >= 1000000000) {
+    return (num / 1000000000).toFixed(2) + 'B';
+  }
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(2) + 'M';
   }
 
   if (num > 1) {
     return formatted;
+  }
+
+  if (num <= 0) {
+    return num;
   }
 
   return parseFloat(formatted).toFixed(num < 1 ? 3 : 2);

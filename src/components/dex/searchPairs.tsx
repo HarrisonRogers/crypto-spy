@@ -28,7 +28,6 @@ function SearchPairs() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   // State to store the input value that updates immediately as user types
   const [inputValue, setInputValue] = useState('');
-
   useEffect(() => {
     // Set up a timer that will update the debounced value after 1 second
     const timer = setTimeout(() => {
@@ -77,8 +76,10 @@ function SearchPairs() {
           <TableHeader>
             <TableRow>
               <TableHead>Pair</TableHead>
-              <TableHead>DEX</TableHead>
               <TableHead>Chain</TableHead>
+              <TableHead>
+                MCap <UsdTag />
+              </TableHead>
               <TableHead>
                 Price <UsdTag />
               </TableHead>
@@ -86,10 +87,7 @@ function SearchPairs() {
               <TableHead>1h</TableHead>
               <TableHead>24h</TableHead>
               <TableHead>
-                Market Cap <UsdTag />
-              </TableHead>
-              <TableHead>
-                Liquidity <UsdTag />
+                Liq <UsdTag />
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -124,20 +122,18 @@ function SearchPairs() {
                   </a>
                 </TableCell>
 
-                {/* DEX Name Column */}
-                <TableCell className="text-xs uppercase">
-                  {pair.dexId}
-                </TableCell>
-
                 {/* Chain ID Column */}
                 <TableCell className="text-xs uppercase">
                   {pair.chainId}
                 </TableCell>
 
-                {/* Price Column */}
+                {/* Market Cap Column */}
                 <TableCell>
-                  ${formatNumberWithCommas(parseFloat(pair.priceUsd || '0'))}
+                  ${formatNumberWithCommas(pair.marketCap || 0)}
                 </TableCell>
+
+                {/* Price Column */}
+                <TableCell>${pair.priceUsd}</TableCell>
 
                 {/* Price Change 5 minutes */}
                 <PriceChangeTableCell priceChange={pair.priceChange.m5 || 0} />
@@ -147,11 +143,6 @@ function SearchPairs() {
 
                 {/* Price Change 24 hours */}
                 <PriceChangeTableCell priceChange={pair.priceChange.h24 || 0} />
-
-                {/* Market Cap Column */}
-                <TableCell>
-                  ${formatNumberWithCommas(pair.marketCap || 0)}
-                </TableCell>
 
                 {/* Liquidity Column */}
                 <TableCell>

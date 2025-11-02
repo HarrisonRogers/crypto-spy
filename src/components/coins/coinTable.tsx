@@ -88,10 +88,10 @@ function CoinTable() {
             />
 
             <TableCell>
-              ${formatNumberWithCommas(coin.market_cap || 0, isExtension)}
+              ${formatNumberWithCommas(coin.market_cap || 0)}
             </TableCell>
             <TableCell>
-              ${formatNumberWithCommas(coin.ath || 0, isExtension)}{' '}
+              ${formatNumberWithCommas(coin.ath || 0)}{' '}
               <small className="text-gray-400">
                 ({formatDate(coin.ath_date)})
               </small>
