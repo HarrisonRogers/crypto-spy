@@ -1,11 +1,11 @@
 {
-  "name": "Crypto Spy",
+  "name": "Crypto Spy - Cryptocurrency Price Tracker",
   "short_name": "Crypto Spy",
-  "description": "Tracks crypto prices and trends and more",
+  "description": "Track Bitcoin, Ethereum, and 1000+ cryptocurrency prices in real-time. Free crypto tracker with live charts and DEX pairs.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
   "orientation": "portrait-primary",
   "icons": [
     {
