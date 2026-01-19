@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Crypto Spy",
-  "version": "1.4.1",
-  "description": "Tracks crypto prices and trends and more",
+  "version": "1.4.2",
+  "description": "Track BTC, ETH & 1000+ cryptocurrency prices live. Free tracker with charts, DEX pairs & Chrome extension alerts.",
   "icons": {
     "16": "favicon-16x16.png",
     "32": "favicon-32x32.png",
