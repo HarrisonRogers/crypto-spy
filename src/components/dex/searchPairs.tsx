@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import {
   Table,
@@ -16,6 +16,7 @@ import { formatNumberWithCommas } from '@/lib/formatData';
 import PriceChangeTableCell from '../coins/priceChangeTableCell';
 import { Search } from 'lucide-react';
 import UsdTag from '../ui/usdTag';
+import useDebounce from '@/data/hooks/useDebounce';
 
 /**
  * SearchPairs component allows users to search for cryptocurrency trading pairs
@@ -23,21 +24,9 @@ import UsdTag from '../ui/usdTag';
  * excessive API calls while the user is typing.
  */
 function SearchPairs() {
-  // State to store the actual search value that gets passed to the API
-  const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
-  // State to store the input value that updates immediately as user types
   const [inputValue, setInputValue] = useState('');
-  useEffect(() => {
-    // Set up a timer that will update the debounced value after 1 second
-    const timer = setTimeout(() => {
-      setDebouncedSearchValue(inputValue);
-    }, 700);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [inputValue]);
+  const debouncedSearchValue = useDebounce(inputValue, 700);
 
   // Use our custom hook to fetch dex search results
   const { data, isLoading, error } = useDexSearch(debouncedSearchValue);
@@ -51,7 +40,7 @@ function SearchPairs() {
       {/* Search Input Section */}
       <div className="flex relative gap-2 mx-3">
         <Search
-          className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+          className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400"
           onClick={() => searchInputRef.current?.focus()}
         />
         <Input
